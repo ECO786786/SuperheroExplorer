@@ -1,4 +1,9 @@
+import { memo } from "react";
+
+// TODO: Add debouncing for search input to improve performance
 const SearchBar = ({ input, handleSearch }) => {
+  // TODO: Add clear button for better UX
+
   return (
     <div className="searchBar">
       <input
@@ -11,4 +16,5 @@ const SearchBar = ({ input, handleSearch }) => {
   );
 };
 
+// TODO: Consider using React.memo since this component rarely needs to update
 export default SearchBar;

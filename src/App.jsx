@@ -4,7 +4,11 @@ import SuperheroList from "./SuperheroList";
 import SearchBar from "./SearchBar";
 import SelectOptions from "./SelectOptions";
 
+// TODO: ui is not responsive (no mobile view)
+
 function App() {
+  // TODO: this app usually dont contain too much logic
+  // everything should happen inside other components (container & presentational components)
   const [superHeros, setSuperHeros] = useState([]);
   const [input, setInput] = useState("");
   const [publishers, setPublishers] = useState([]);
@@ -19,6 +23,7 @@ function App() {
       try {
         const response = await fetch(url);
         if (!response.ok) {
+          // TODO: a generic error message would be more helpful to the user
           throw new Error(`Response status: ${response.status}`);
         }
 
@@ -31,8 +36,14 @@ function App() {
         setPublishers(uniquePublishers);
       } catch (error) {
         console.error(error.message);
+      } finally {
+        setLoading(false);
       }
+
     };
+
+    // TODO: this should be after the loading has been done, not randomly after 2 seconds
+    // however, the simulation of loading is a great idea
     setTimeout(() => {
       setLoading(false);
     }, 2000);
@@ -42,6 +53,7 @@ function App() {
 
   useEffect(() => {
     const getSuperHeroInformation = async () => {
+      // TODO: the url should be store in a separate config file, instead of hardcoding here
       const url = `https://akabab.github.io/superhero-api/api/id/${heroId}.json`;
       try {
         const response = await fetch(url);
@@ -74,9 +86,10 @@ function App() {
 
   const filteredHeros = superHeros.filter((hero) => {
     const findHero = hero.name.toLowerCase().includes(input.toLowerCase());
+    // TODO: this logic looks weird to me, fallback value is true
     const publisherMatch = selectedPublisher
       ? hero.biography.publisher === selectedPublisher
-      : true;
+      : false;
 
     return findHero && publisherMatch;
   });
