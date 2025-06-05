@@ -3,23 +3,27 @@ import "./App.css";
 import SuperheroList from "./SuperheroList";
 import SearchBar from "./SearchBar";
 import SelectOptions from "./SelectOptions";
+import { ALL_HEROS_URL, getHeroById } from "./config";
 
 function App() {
+  // TODO: this app usually dont contain too much logic
+  // everything should happen inside other components (container & presentational components)
   const [superHeros, setSuperHeros] = useState([]);
   const [input, setInput] = useState("");
   const [publishers, setPublishers] = useState([]);
   const [selectedPublisher, setSelectedPublisher] = useState("");
   const [heroId, setHeroId] = useState("");
   const [heroInformation, setHeroInformation] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getAllSuperHeros = async () => {
-      const url = "https://akabab.github.io/superhero-api/api/all.json";
+      const url = ALL_HEROS_URL;
       try {
+        setLoading(true);
         const response = await fetch(url);
         if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
+          throw new Error(`Cannot find Super Hero: ${response.status}`);
         }
 
         const data = await response.json();
@@ -31,18 +35,17 @@ function App() {
         setPublishers(uniquePublishers);
       } catch (error) {
         console.error(error.message);
+      } finally {
+        setLoading(false);
       }
     };
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
 
     getAllSuperHeros();
   }, []);
 
   useEffect(() => {
     const getSuperHeroInformation = async () => {
-      const url = `https://akabab.github.io/superhero-api/api/id/${heroId}.json`;
+      const url = getHeroById(heroId);
       try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -71,15 +74,14 @@ function App() {
   const handleHeroId = (id) => {
     setHeroId(id);
   };
-
   const filteredHeros = superHeros.filter((hero) => {
-    const findHero = hero.name.toLowerCase().includes(input.toLowerCase());
-    const publisherMatch = selectedPublisher
-      ? hero.biography.publisher === selectedPublisher
-      : true;
+    const nameMatch = hero.name.toLowerCase().includes(input.toLowerCase());
+    const publisherMatch =
+      !selectedPublisher || hero.biography.publisher === selectedPublisher;
 
-    return findHero && publisherMatch;
+    return nameMatch && publisherMatch;
   });
+
   return (
     <>
       {loading ? (
