@@ -5,9 +5,7 @@ const SuperheroList = ({ superHeros, handleHeroId }) => {
   return (
     <div className="grid-container">
       {superHeros.length === 0 ? (
-        <p className="empty-message">
-          No superheroes found. Try another search!
-        </p>
+        <p>No superheroes found. Try another search!</p>
       ) : (
         superHeros.map((hero) => (
           <SuperHeroCard

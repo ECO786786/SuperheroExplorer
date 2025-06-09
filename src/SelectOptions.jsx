@@ -9,7 +9,7 @@ const SelectOptions = ({
 
   return (
     <div className="select-options-container">
-      <label htmlFor="publisher-select">Filter by Publisher:</label>
+      <label htmlFor="publisher-select">Filter by Publisher</label>
       <select
         id="publisher-select"
         onChange={handlePublisherChange}

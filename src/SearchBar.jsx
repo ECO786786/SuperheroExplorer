@@ -1,9 +1,10 @@
 const SearchBar = ({ input, handleSearch }) => {
   return (
     <div className="searchBar">
+      <h2>Search your favourite super hero</h2>
       <input
         type="text"
-        placeholder="Search your favourite super hero"
+        placeholder="Find hero"
         value={input}
         onChange={handleSearch}
       />
