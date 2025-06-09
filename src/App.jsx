@@ -97,7 +97,6 @@ function App() {
           <SuperheroList
             superHeros={filteredHeros}
             handleHeroId={handleHeroId}
-            heroInformation={heroInformation}
           />
         </>
       )}
