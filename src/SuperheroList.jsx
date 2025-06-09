@@ -2,6 +2,7 @@ import SuperHeroCard from "./SuperHeroCard";
 import { memo } from "react";
 
 const SuperheroList = ({ superHeros, handleHeroId }) => {
+  // TODO(Advanced): Consider adding pagination or virtualization for better performance with large lists
   return (
     <div className="grid-container">
       {superHeros.length === 0 ? (
