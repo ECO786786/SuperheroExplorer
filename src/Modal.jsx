@@ -9,12 +9,10 @@ const Modal = ({ onClose, hero }) => {
     };
   }, []);
 
-  const { biography = {} } = hero || {};
-  const {
-    fullName = "Unknown",
-    placeOfBirth = "Unknown",
-    firstAppearance = "Unknown",
-  } = biography;
+  const bio = hero && hero.biography ? hero.biography : {};
+  const fullName = bio.fullName || "Unknown";
+  const placeOfBirth = bio.placeOfBirth || "Unknown";
+  const firstAppearance = bio.firstAppearance || "Unknown";
 
   return (
     <div

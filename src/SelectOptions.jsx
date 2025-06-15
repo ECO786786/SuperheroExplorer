@@ -14,7 +14,6 @@ const SelectOptions = ({
         id="publisher-select"
         onChange={handlePublisherChange}
         value={selectedPublisher}
-        className="publisher-select"
       >
         <option value="">All Publishers</option>
         {sortedPublishers.map((pub) => (

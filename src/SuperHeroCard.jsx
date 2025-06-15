@@ -18,10 +18,10 @@ const SuperHeroCard = ({ hero, handleHeroId }) => {
 
   return (
     <div className="card">
-      <h2>{hero.name}</h2>
+      <h2>{hero?.name || hero?.biography?.fullName}</h2>
       <img
         src={hero?.images?.sm || fallbackImg}
-        alt={hero?.name || "Superhero"}
+        alt={hero?.name || hero?.biography?.fullName || "Superhero"}
         loading="lazy"
         onError={handleImageError}
       />
