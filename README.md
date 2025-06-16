@@ -1,13 +1,32 @@
-# React + Vite
+# 🦸 Superhero Search App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React app that lets users search for superheroes and view their information. The app displays a list of superheroes with pagination and lets users view individual hero details like full name, place of birth, and first appearance.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔍 Search for superheroes
+- 📄 View hero details (biography, stats, etc.)
+- 📃 Pagination for easy navigation
+- ⚛️ Built with React and JavaScript
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# SuperheroExplorer
+---
+
+## 🛠 Tech Stack
+
+- React
+- JavaScript (ES6+)
+- CSS
+- [SuperHero API](https://superheroapi.com/)
+
+---
+
+## 📦 Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/superhero-app.git
+cd superhero-app
+```
